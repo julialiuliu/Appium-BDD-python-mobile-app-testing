@@ -17,7 +17,6 @@ def step_impl(context):
         raise e
     finally:
         sleep(PAGE_NAVIGATION_TIMER)
-    pass
 
 @behave.when(u'"{searchedterm}" is entered')
 def step_impl(context, searchedterm):
@@ -35,9 +34,7 @@ def step_impl(context, searchedterm):
 def step_impl(context, searchedterm):
     context.reddit_home_page.tap_on_the_searched_result(searchedterm)
     sleep(PAGE_NAVIGATION_TIMER)
-    pass
 
 @behave.then('should be able to save the most recent posted title')
 def step_impl(context):
     assert context.reddit_home_page.save_top_posted_title_on_subreddit() is True
-    pass
