@@ -5,6 +5,7 @@ from appium import webdriver
 from time import sleep
 from utils.smart_driver import *
 
+IDLE_TIMER    =  3
 #Hooks
 def before_all(context):
     context.config.setup_logging()
@@ -24,12 +25,12 @@ def before_all(context):
     start_driver(context)
 
 def after_all(context):
-    pass
+    #TODO
     #uninstall the app on cloude device
     #context.driver.remove_app(context.config.userdata.get("app_uri"));
+    pass
 
 def before_feature(context, feature):
-    #launch_app()
     pass
 
 def before_scenario(context, scenario):
@@ -39,8 +40,8 @@ def before_scenario(context, scenario):
     pass
 
 def after_scenario(context, scenario):
-    if scenario.status == 'failed':
-       pass
+    #TODO
+    pass
 
 def after_feature(context, feature):
     cleanup_driver(context)
@@ -56,7 +57,6 @@ def after_step(context, step):
         name="Screenshot",
         attachment_type=AttachmentType.PNG)
         sleep(IDLE_TIMER)
-    pass
 
 def before_tag(context, tag):
     pass
