@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 logger = logging.getLogger('behaving')
 
 class RedditHomePage(BasePage):
-
     #Reddit home page
     launch_logo_loc          = (By.ID, "com.reddit.frontpage:id/launch_logo")
     welcome_msg_loc          = (By.ID, "com.reddit.frontpage:id/welcome_message")
@@ -34,7 +33,6 @@ class RedditHomePage(BasePage):
     layout_loc               = (By.CLASS_NAME, "android.widget.LinearLayout")
     link_title_loc           = (By.ID, "com.reddit.frontpage:id/link_title")
 
-
     def skip_on_board_page(self):
         if self.is_element_found(*self.skip_login_link_loc) == True:
             self.find_element(*self.skip_login_link_loc).click()
@@ -45,6 +43,7 @@ class RedditHomePage(BasePage):
             dismiss_altert_modal(self)
         else:
             self.fail("STDOUT: Can't find on board page. \n")
+        return
 
     def input_searched_term(self, searched_term):
         if self.is_element_found(*self.search_field_loc) == True:
@@ -53,6 +52,7 @@ class RedditHomePage(BasePage):
                 dismiss_altert_modal(self)
         else:
             self.fail("STDOUT: Can't find search field. \n")
+        return
 
     def check_searched_result_is_displayed(self, searched_term):
         names_array = self.fetch_elements_name(*self.search_results_name_loc)
@@ -88,11 +88,12 @@ class RedditHomePage(BasePage):
                     self.find_the_specific_tapable_element(i, *self.search_results_name_loc).click()
                     return
         self.fail("STDOUT: Can't tap on the searched result: %s. \n" % searched_term)
+        return
 
     def save_top_posted_title_on_subreddit(self):
         title_names = self.fetch_elements_name(*self.link_title_loc)
         if  title_names!= None:
             sys.stdout.write("\n\n Top posted title is :   %s \n\n" % title_names[0])
             return True
-        return False
         self.fail("STDOUT: Can't find posted title on searched result: %s. \n" % searched_term)
+        return False
