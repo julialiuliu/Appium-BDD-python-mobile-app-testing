@@ -13,11 +13,12 @@
 2. Send out output report to emailbox
 3. Integrate to Jenkin or Bamboo
 
-####How to run this script
+#### How to run this script
 ./run.sh
+Note: before you run the script, make sure you change the configure for device.
 
 #### Moreinfo
 
 * [Documentation](https://github.com/julialiuliu/Appium-BDD-python-mobile-app-testing/wiki)
 * [Issue Tracking](https://github.com/julialiuliu/Appium-BDD-python-mobile-app-testing/issues)
-* Mailing list: [jiuboliu@gmail.com](jiuboliu@gmail.com)
+* Contact me: [jiuboliu@gmail.com](jiuboliu@gmail.com)
