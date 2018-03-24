@@ -14,8 +14,6 @@ from behave.tag_matcher import ActiveTagMatcher, setup_active_tag_values
 CWD = os.getcwd()
 SCREEN_SHOTS_PATH = CWD + "/reports/screenshots/"
 
-
-
 __driver_configs = {}
 
 def driver_setup(host, port, appium_version, platform_name, platform_version,
@@ -58,10 +56,11 @@ def start_driver(context):
         raise e
 
 def take_screenshot(context, filename):
-    ts = time.time()
-    st = time.ctime(ts)
-    screenshot_file =  SCREEN_SHOTS_PATH + filename + st + ".PNG"
-    context.driver.save_screenshot(screenshot_file)
+    # ts = time.time()
+    # st = time.ctime(ts)
+    # screenshot_file =  SCREEN_SHOTS_PATH + filename + st + ".PNG"
+    
+    context.driver.save_screenshot(filename)
 
 def cleanup_driver(context):
     context.driver.quit()

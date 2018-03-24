@@ -1,11 +1,19 @@
+import allure
+import hashlib
 import os
 import sys
 
+from allure_commons.types import AttachmentType
 from appium import webdriver
 from time import sleep
 from utils.smart_driver import *
 
 IDLE_TIMER    =  3
+
+global gCWD , gSCREEN_SHOTS_PATH
+gCWD = os.getcwd()
+gSCREEN_SHOTS_PATH = CWD + "/reports/screenshots/"
+
 #Hooks
 def before_all(context):
     context.config.setup_logging()
@@ -50,13 +58,14 @@ def before_step(context, step):
     pass
 
 def after_step(context, step):
-    take_screenshot(context, step.name)
     if step.status == "failed":
-        allure.attach(context.driver.get_screenshot_as_file('screenshots\\{}.png'.format
-                       (step.name)),
-        name="Screenshot",
-        attachment_type=AttachmentType.PNG)
+        ts = time.time()
+        st = time.ctime(ts)
+        screenshot_file =  gSCREEN_SHOTS_PATH + step.name + "_" + st + ".png"
+        take_screenshot(context, screenshot_file)
+        allure.attach(context.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
         sleep(IDLE_TIMER)
+    pass
 
 def before_tag(context, tag):
     pass

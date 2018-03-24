@@ -74,8 +74,7 @@ class BasePage:
             self.elements = self.driver.find_elements(*loc)
             if self.elements == None:
                 return None
-            else:
-                return self.elements[0].get_attribute("text")
+            return self.elements[0].get_attribute("text")
         except Exception as e:
             raise e
 
@@ -90,14 +89,14 @@ class BasePage:
         try:
             WebDriverWait(self.driver, ELEMENT_DISPLAY_TIMER).until(EC.visibility_of_element_located(loc))
             return True
-        except:
+        except TimeoutException:
             return False
 
     def is_tapable_element_found(self, *loc):
         try:
             WebDriverWait(self.driver, ELEMENT_DISPLAY_TIMER).until(EC.element_to_be_clickable(loc))
             return True
-        except:
+        except TimeoutException:
             return False
 
     #Andriod enter key

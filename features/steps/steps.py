@@ -5,8 +5,8 @@ from appium import webdriver
 from behave import given, when, then, step
 from time import sleep
 
-PAGE_NAVIGATION_TIMER    = 5
-IDLE_TIMER               = 3
+PAGE_NAVIGATION_TIMER    = 3
+IDLE_TIMER               = 2
 
 @given('the app is launched')
 def step_impl(context):
@@ -35,6 +35,6 @@ def step_impl(context, searchedterm):
     context.reddit_home_page.tap_on_the_searched_result(searchedterm)
     sleep(PAGE_NAVIGATION_TIMER)
 
-@then('should be able to save the most recent posted title')
-def step_impl(context):
-    assert context.reddit_home_page.save_top_posted_title_on_subreddit() is True
+@then(u'check "{checkterm}" in the recent posted title')
+def step_impl(context, checkterm):
+    assert context.reddit_home_page.check_specific_term_in_top_posted_title(checkterm) is True

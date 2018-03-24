@@ -1,4 +1,4 @@
-###  Appium ENV Setup on mac OS 
+###  Appium ENV Setup on mac OS
 Note: Make sure you have full permissions to the file system
 
 1. Java
@@ -28,7 +28,7 @@ source .bash_profile
 11. Install Appium Python Client
 pip install appium-python-client
 12. appium-doctor
-npm install -g appium-doctor 
+npm install -g appium-doctor
 appium-doctor (Check appium environment)
 13. BDD
 (sudo su)
@@ -50,22 +50,27 @@ pip install sauceclient
 90.Others (install all dependencies)
 pip install -r requirements.txt
 
-### Python Code Guide 
+### Python Code Guide
 
-https://www.python.org/dev/peps/pep-0008/#package-and-module-names 
+https://www.python.org/dev/peps/pep-0008/#package-and-module-names
 - packages (directories) should have short, all-lowercase names, preferably without underscores;
 - modules (filenames) should have short, all-lowercase names, and they can contain underscores;
 - classes should use the CapWords convention.
 
 
-### Write Automation Script 
+### Write Automation Script
 1. UIautomatorviewer - a GUI tool to scan and analyze the UI components of an android application
    Moreinfo: https://www.guru99.com/uiautomatorviewer-tutorial.html
 
 2. behave
    https://github.com/behave/behave
 
-###  Cloud test farm 
+
+### Debug
+behave ./features/ --no-capture -f plain
+
+
+###  Cloud test farm
 1. amazon (first 1000 minutes free)
 https://docs.aws.amazon.com/devicefarm/latest/developerguide/test-types-android-appium-python.html
 2. firebase

@@ -3,8 +3,9 @@ import re
 import sys
 from time import sleep
 
-from utils.base_page import BasePage
 from selenium.webdriver.common.by import By
+from utils.base_page import BasePage
+
 
 logger = logging.getLogger('behaving')
 
@@ -59,19 +60,17 @@ class RedditHomePage(BasePage):
         if names_array == None:
             self.fail("STDOUT: Can't find searched result: %s. \n" % searched_term)
             return False
-        else:
-            for i in range(names_array.__len__()):
-                result_name = names_array[i]
-                if  searched_term == result_name[2:]:
-                    return True
-            self.fail("STDOUT: Can't find searched result: %s. \n" % searched_term)
-            return False
+        for i in range(names_array.__len__()):
+            result_name = names_array[i]
+            if  searched_term == result_name[2:]:
+                return True
+        self.fail("STDOUT: Can't find searched result: %s. \n" % searched_term)
+        return False
 
     def is_alert_modal_displayed(self):
         if self.is_element_found(*self.alert_msg_title_loc) == True:
             return True
-        else:
-            return False
+        return False
 
     def dismiss_altert_modal(self):
         self.find_element(*self.alert_msg_yes_button_loc).click()
@@ -90,10 +89,12 @@ class RedditHomePage(BasePage):
         self.fail("STDOUT: Can't tap on the searched result: %s. \n" % searched_term)
         return
 
-    def save_top_posted_title_on_subreddit(self):
+    def check_specific_term_in_top_posted_title(self, check_term):
         title_names = self.fetch_elements_name(*self.link_title_loc)
-        if  title_names!= None:
-            sys.stdout.write("\n\n Top posted title is :   %s \n\n" % title_names[0])
+        if title_names == None:
+            return False
+        if check_term in title_names[0]:
+            sys.stdout.write("\n\n Top posted title : \"%s\" contains CHECK TERM : \"%s\". \n\n " % (title_names[0], check_term))
             return True
-        self.fail("STDOUT: Can't find posted title on searched result: %s. \n" % searched_term)
+        sys.stdout.write("\n\n Top posted title : \"%s\" does not contain CHECK TERM : \"%s\". \n\n " % (title_names[0], check_term))
         return False

@@ -4,8 +4,9 @@
 
 1. Launch the Reddit App on local device
 2. Search for a subreddit called "gaming"
-3. Open the sub-reddit
-4. Printout the top most post's title
+3. Open the "gaming" sub-reddit
+4. Check if "nintendo" in the top posted title
+5. Generate Allure test report (http://allure.qatools.ru/)
 
 #### TODO
 1. Integrate to cloud test farm (ex:Amazon test farm or Sourcelabs)
@@ -13,13 +14,10 @@
 3. Integrate to Jenkin or Bamboo
 
 ####How to run this script
+./run.sh
 
-Option 1. Run the script
-behave ./features/ --no-capture -f plain
+#### Moreinfo
 
-
-Option 2. Run the script and generate Allure report
-
-behave -f allure_behave.formatter:AllureFormatter -o ./reports/report/ ./features/
-
-allure serve ./reports/report/
+* [Documentation](https://github.com/julialiuliu/Appium-BDD-python-mobile-app-testing/wiki)
+* [Issue Tracking](https://github.com/julialiuliu/Appium-BDD-python-mobile-app-testing/issues)
+* Mailing list: [jiuboliu@gmail.com](jiuboliu@gmail.com)

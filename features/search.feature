@@ -6,7 +6,7 @@ Feature: Check the Search result in subreddit
     When "<SEARCHED TERM>" is entered
     Then should be able to see the "<SEARCHED TERM>" results
     When tap on the "<SEARCHED TERM>" in the searched result list
-    Then should be able to save the most recent posted title
+    Then check "<CHECK TERM>" in the recent posted title
     Examples:
-    | SEARCHED TERM |
-    | gaming        |
+    | SEARCHED TERM | CHECK TERM |
+    | gaming        | nintendo   |
