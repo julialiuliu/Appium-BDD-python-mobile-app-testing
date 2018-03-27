@@ -1,12 +1,15 @@
 ### Appium-BDD-python-mobile-app-testing
 
-#### This is a smoke test for Reddit App
+#### This is a smoke test for an Android mobile App
 
-1. Launch the Reddit App on local device
-2. Search for a subreddit called "gaming"
-3. Open the "gaming" sub-reddit
-4. Check if "nintendo" in the top posted title
-5. Generate Allure test report (http://allure.qatools.ru/)
+Write your own script
+
+1. Write feature file : /features/yourown.feature (follow Gherkin standard: https://cucumber.io/docs/reference), try not use UX words like sth button, sth string, sth text, because that might be changed frequently.
+2. Implement the step files: /features/steps/steps.py, try to use as many steps as we can.
+3. Define page object and action in page files: /pages/android/newpage.py
+4. If you have some common action on all pages, then add them in: /utils/base_page.py
+5. The report and screenshot are generated: /reports/report/ 
+Allure test report (http://allure.qatools.ru/)
 
 Final Report:
 ![Report-dashboard](https://github.com/julialiuliu/Appium-BDD-python-mobile-app-testing/blob/master/doki/img/dashboard2.png)
